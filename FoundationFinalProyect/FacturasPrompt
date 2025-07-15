@@ -1,0 +1,44 @@
+# CONTEXTO DEL PROYECTO
+(… mismo contexto general descrito arriba …)
+
+# SITUACIÓN ACTUAL
+* Productos y Clientes ya funcionan con sus servicios y arrays.
+* Factura.java y DetalleFactura.java existen (ver campos en el código original).
+* FacturaService.java tiene arreglo `facturas[100]` y métodos agregar/listar/size.
+* FacturaPanel.java es un placeholder dentro del JTabbedPane de MainWindow.
+
+# TU MISIÓN: IMPLEMENTAR EL MÓDULO DE FACTURACIÓN
+1. **Requisitos funcionales mínimos**
+   a) Crear facturas y proformas (boolean proforma).  
+   b) Agregar múltiples líneas de detalle (producto + cantidad) calculando subtotal y total.  
+   c) Asociar la factura a un cliente existente.  
+   d) Listar facturas/proformas en una JTable.
+
+2. **Componentes a desarrollar**
+   - **FacturaTableModel.java** (AbstractTableModel)  
+     Columnas sugeridas: ID | Cliente | Fecha | Total | Tipo (Factura/Proforma).
+   - **FacturaPanel.java**  
+     *Sección superior*:  
+       • Combobox de cliente (inyectando ClienteService).  
+       • Radio buttons o checkbox para marcar “Proforma”.  
+       • Tabla secundaria para agregar líneas: selector de producto, campo cantidad, botón “Añadir línea”.  
+     *Sección inferior*:  
+       • JTable principal que usa FacturaTableModel para listar las facturas existentes.  
+       • Etiqueta “Total” que se actualice dinámicamente al crear la factura.  
+       • Botón “Guardar” que almacene la factura vía FacturaService.  
+   - Validar: stock suficiente al agregar línea; limitar facturas a 100.
+
+3. **Servicios auxiliares**  
+   Si necesitas restar stock de Producto al facturar, añade un método `descontarStock(int idProd, int cant)` en ProductoService y úsalo con seguridad (evitar números negativos).
+
+4. **UX recomendada**  
+   - Separar claramente el formulario de entrada y la lista histórica.  
+   - Mensajes `JOptionPane` de éxito/error.
+
+5. **Entregables**  
+   - FacturaTableModel.java  
+   - FacturaPanel.java  
+   - Cualquier pequeña mejora en los services implicados.
+
+# FORMATO DE RESPUESTA ESPERADO DEL ASISTENTE
+(igual que se aplicó para el módulo de clientes).

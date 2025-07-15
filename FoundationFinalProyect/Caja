@@ -1,0 +1,34 @@
+# CONTEXTO DEL PROYECTO
+(… mismo contexto general descrito arriba …)
+
+# SITUACIÓN ACTUAL
+* El modelo CierreCaja.java y CajaService.java existen (arreglo `cierres[100]`).
+* CajaPanel.java es un placeholder en la pestaña “Caja”.
+
+# TU MISIÓN: IMPLEMENTAR EL MÓDULO DE CIERRE DE CAJA
+1. **Funcionalidades requeridas**
+   a) Registrar un cierre diario con:  
+      • Efectivo inicial, Ingresos, Egresos → calcular efectivo final.  
+   b) Listar cierres anteriores en una JTable.  
+   c) Evitar más de un cierre por fecha (validación opcional).
+
+2. **Componentes a desarrollar**
+   - **CajaTableModel.java**  
+     Columnas: ID | Fecha | Inicial | Ingresos | Egresos | Final.
+   - **CajaPanel.java**  
+     *Formulario superior*: campos numéricos para inicial, ingresos, egresos; botón “Registrar cierre”.  
+     *Tabla inferior*: muestra los cierres existentes usando CajaTableModel.  
+     - Tras registrar, limpiar campos y refrescar la tabla.
+
+3. **Reglas de negocio**
+   - `efectivoFinal = inicial + ingresos – egresos` (mostrar como solo-lectura).  
+   - Capacidad máxima: 100 cierres.  
+   - Mensajes de error con `JOptionPane` si se excede capacidad o los montos son negativos.
+
+4. **Entregables**
+   - CajaTableModel.java  
+   - CajaPanel.java  
+   - Ajustes mínimos a CajaService si es necesario (p.ej. buscar por fecha).
+
+# FORMATO DE RESPUESTA ESPERADO DEL ASISTENTE
+(igual que en los prompts anteriores).

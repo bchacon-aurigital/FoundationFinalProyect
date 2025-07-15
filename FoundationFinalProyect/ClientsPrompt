@@ -1,0 +1,48 @@
+CLIENTS PROMPT:
+
+# CONTEXTO DEL PROYECTO
+* Lenguaje: Java 17, gestor de dependencias: Maven.
+* Interfaz: 100 % Swing (no consola).
+* Sin base de datos: TODOS los datos se guardan en memoria usando arreglos de longitud fija (capacidad 100).
+  Ej.: Cliente[] clientes = new Cliente[100];
+* Estructura Maven establecida:
+  src/main/java/com/libreria
+    ├─ Main.java                (entry point)
+    ├─ MainWindow.java          (ventana con JTabbedPane)
+    ├─ modelo/
+    │     Producto.java, Cliente.java, Factura.java, DetalleFactura.java, CierreCaja.java
+    ├─ servicio/
+    │     ProductoService.java, ClienteService.java, FacturaService.java, CajaService.java
+    └─ vista/
+          ProductoPanel.java      (GUI completa y funcional)
+          (faltan ClientePanel, FacturaPanel, CajaPanel)
+
+* Ya funciona la pestaña “Productos” (formulario + JTable) como ejemplo; los demás módulos están vacíos.
+* Paquete raíz: **com.libreria** en todas las clases.
+
+# TU MISIÓN: IMPLEMENTAR EL MÓDULO DE CLIENTES
+1. **Modelo:** Ya existe Cliente.java con id, nombre, teléfono, email.
+2. **Servicio:** Ya existe ClienteService.java con arreglo interno `clientes[100]`, métodos agregar/listar/size.
+3. **GUI a crear (ClientePanel.java)**  
+   - Formulario de alta con campos: ID, Nombre, Teléfono, E-mail.  
+   - Botón **Agregar** que:
+     * Valide que ID sea numérico y no repetido.
+     * Inserte el objeto en ClienteService y refresque la tabla.  
+   - JTable que muestre columnas: ID | Nombre | Teléfono | E-mail, usando un `ClienteTableModel` (subclase de AbstractTableModel).  
+   - Todas las clases GUI deben residir en `com.libreria.vista`.
+
+4. **Integración:** MainWindow ya añade la pestaña “Clientes” con un ClientePanel; sólo hay que sustituir el placeholder.
+
+5. **Estilo de código:**  
+   - Seguir el patrón ya visto en ProductoPanel: controlador liviano, validación mínima, `fireTableDataChanged()` tras cada alta.  
+   - Proteger el arreglo de desbordes (máx. 100).
+
+6. **Entregables:**  
+   - ClienteTableModel.java  
+   - ClientePanel.java  
+   - Cualquier ajuste menor en ClienteService (ej. búsqueda de ID) si lo necesitas.
+
+# FORMATO DE RESPUESTA ESPERADO DEL ASISTENTE
+* Pega directamente cada clase (con importaciones) especificando la ruta relativa dentro de src/main/java.  
+* No pidas al usuario decidir entre opciones; ofrece la “mejor práctica” directamente.  
+* Mantén los comentarios concisos y útiles.
